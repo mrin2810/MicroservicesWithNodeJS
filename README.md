@@ -32,3 +32,9 @@ Go to each folder and run npm install.
 | -----|--------|-------|------|
 |/posts | POST | {title: string} | Create a new Post |
 |/posts | GET | - | Retrieve all posts |
+
+### Comments Service
+| Path | Method | Body? | Goal |
+| -----|--------|-------|------|
+|/posts/:id/comments | POST | {content: string} | Create a comment associated with the given post ID |
+|/posts/:id/comments | GET | - | Retrieve all comments associated with a given post ID |
