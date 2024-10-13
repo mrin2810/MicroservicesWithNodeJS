@@ -38,3 +38,15 @@ Go to each folder and run npm install.
 | -----|--------|-------|------|
 |/posts/:id/comments | POST | {content: string} | Create a comment associated with the given post ID |
 |/posts/:id/comments | GET | - | Retrieve all comments associated with a given post ID |
+
+### React App (Client - Web Client)
+
+```
+App
+|_ PostList
+    |_ CommentList
+    |_ CommentCreate
+|_ PostCreate
+```
+
+The above is our ReactDOM structure.
