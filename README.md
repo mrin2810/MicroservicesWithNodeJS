@@ -13,11 +13,22 @@ Database per feature architecture is followed.
     - This might look like an overhead but this will make our product more efficient.
 
 
-    ## 01-project-blog
-    Go to each folder and run npm install.
-    - client
-    - comments
-    - event-bus
-    - moderation
-    - posts
-    - query
+## 01-project-blog
+Go to each folder and run npm install.
+- client
+- comments
+- event-bus
+- moderation
+- posts
+- query
+
+### Initial App Setup
+- Client: Web Client
+- Posts: Backend service for creating posts
+- Comments: Backend service for creating comments
+
+### Post Service
+| Path | Method | Body? | Goal |
+| -----|--------|-------|------|
+|/posts | POST | {title: string} | Create a new Post |
+|/posts | GET | - | Retrieve all posts |
