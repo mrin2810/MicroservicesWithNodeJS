@@ -11,3 +11,13 @@ Database per feature architecture is followed.
 - This new service will have its own database with the data that is only required for that particular service. And, we use "Event Bus" to keep the data on this database in sync with other services.
     - Anytime a new use is created Event Bus is notified which then notifies any concerning services. And these services then update their database.
     - This might look like an overhead but this will make our product more efficient.
+
+
+    ## 01-project-blog
+    Go to each folder and run npm install.
+    - client
+    - comments
+    - event-bus
+    - moderation
+    - posts
+    - query
