@@ -50,3 +50,14 @@ App
 ```
 
 The above is our ReactDOM structure.
+
+#### PostCreate Component
+
+- We are going to see a Cors error, because we have out client running on port 3000 but requesting something on port 4000. 
+    ![alt text](images/image.png)
+    - We have to handle this, by installing the cors package and adding following lines to the index.js file of projects.
+        ```
+        const cors = require('cors');
+        const app = express();
+        app.use(cors());
+        ```
