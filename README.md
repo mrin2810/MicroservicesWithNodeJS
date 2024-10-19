@@ -94,4 +94,5 @@ The above is our ReactDOM structure.
 
 | Path | Method | Body? | Goal |
 | -----|--------|-------|------|
-|/events | POST | {type: string, data: eventData} | This will be the middle man between all the services and the query service |
+|/events | POST | {type: string, data: eventData} | On recieveing this we will store appropriete data in the data structure for minimizing the requests |
+|/posts | GET | ? | This endpoint returns all the posts and the corresponding comments |
