@@ -83,3 +83,15 @@ The above is our ReactDOM structure.
 - Kafka, RabbitMQ are examples of out of the box event busses.
 - Recieves events, publishes them to listeners.  
 - We are going to make a simplest form of an event bus (nothing but an echo chamber)
+
+### Event Bus Service
+| Path | Method | Body? | Goal |
+| -----|--------|-------|------|
+|/events | POST | {type: string, data: eventData} | This will be the middle man between all the services and the query service |
+
+### Query Service
+- We will now, think about the query service, this is the service, which will have information about all the services needed to display a post and its comments.
+
+| Path | Method | Body? | Goal |
+| -----|--------|-------|------|
+|/events | POST | {type: string, data: eventData} | This will be the middle man between all the services and the query service |
