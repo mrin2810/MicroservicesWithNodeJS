@@ -51,7 +51,7 @@ App
 
 The above is our ReactDOM structure.
 
-#### PostCreate Component
+#### Components
 
 - We are going to see a Cors error, because we have out client running on port 3000 but requesting something on port 4000. 
     ![alt text](images/image.png)
@@ -61,3 +61,25 @@ The above is our ReactDOM structure.
         const app = express();
         app.use(cors());
         ```
+
+#### Reducing number of requests
+- If it was a monolith architecture, we would have been easily making this change
+- But for microservice architecture, we need to scratch our head a little more.
+- Way 1: Sync Communication
+    - Easy to understand conceptually
+    - not the best solution
+    - may create architecture tree
+    - no more monolith
+- Way 2: Async Communication
+    - Lets introduce Event Broker
+    - Have create services emmit events.
+    - Introduce a Query Service => which will gather data about the events generated.
+    - Query service doesn't have direct relation with other services.
+    - Query service will be extremely fast
+    [X] Data Duplication
+    [X] Harder to Understand
+
+### What are event busses?
+- Kafka, RabbitMQ are examples of out of the box event busses.
+- Recieves events, publishes them to listeners.  
+- We are going to make a simplest form of an event bus (nothing but an echo chamber)
