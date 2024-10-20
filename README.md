@@ -96,3 +96,38 @@ The above is our ReactDOM structure.
 | -----|--------|-------|------|
 |/events | POST | {type: string, data: eventData} | On recieveing this we will store appropriete data in the data structure for minimizing the requests |
 |/posts | GET | ? | This endpoint returns all the posts and the corresponding comments |
+
+### Moderation Service
+This service is required, if we are adding a comment it needs to be moderated before it is posted. 
+How? It should not have certain words. So each one of the comments will have a new property: 'status' which can be "approved | pending | rejected"
+Now we will add new service, Moderation service
+#### Option 1:
+- Comment submitted.
+- emit event CommentCreated, sent by event bus to all services.
+- Moderation service now, look at the content and decide if it should be approved or not.
+- moderation service will emit event ModeratedEvent, sent by event bus to all services.
+- Query Sevice now, look at the status and if it is approved. it will be added in data.
+
+Pros and Cons:
+- Con: Delay in submission and persistance of the comment.
+- This con is severe enough to reject this option.
+
+#### Option 2:
+- This option is very similar to option 1, with slight change
+- submit comment
+- event emitted "commentCreated"
+- processed by moderation as well as query service, we will keep the comment in default state of pending.
+- But this has a problem. 
+- Here a view service like query service is expected to have knowledge of business logic.
+
+#### Option 3:
+- Here we will have comments Service process ModeratedComments event. and we can send out CommentUpdated event which will be processed by query service.
+
+- user submits comment.
+- comment created event to event bus from there to all other services.
+- so, we have pending comment in query.
+- moderation will send out moderated comment event, and send back to all the services. 
+- comment service now, process this and create generic commentUpdated event and send to query service. 
+- which will now update the status of comment. (without dwelving into how and why the comment was updated).
+
+We will go with option 3.
