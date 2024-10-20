@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ comments }) => {
+const funct = ({ comments }) => {
     const renderedComments = comments.map((comment) => {
         let content;
         if (comment.status === 'approved') {
@@ -17,8 +17,10 @@ export default ({ comments }) => {
     })
     
     return <>
-    <em>{comments.length} Comment{comments.length == 1 || 's'}</em>
+    <em>{comments.length} Comment{comments.length === 1 || 's'}</em>
     <ul>
         {renderedComments}
     </ul></>;
 }
+
+export default funct;

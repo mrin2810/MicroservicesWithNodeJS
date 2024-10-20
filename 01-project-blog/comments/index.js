@@ -36,6 +36,8 @@ app.post('/posts/:id/comments', async (req, res) => {
             status: 'pending',
             postId: req.params.id
         }
+    }).catch(err => {
+        console.log(err.message);
     });
 
     res.status(201).send(comments);
@@ -46,7 +48,7 @@ app.post('/events', async (req, res) => {
     console.log('Event Recieved', type);
     if (type === 'CommentModerated') {
         const {id, postId, status, content} = data;
-        const comments = commentsByPostId[postId];
+        const comments = commentsByPostId[postId] || [];
 
         const comment = comments.find(comment => {
             return comment.id === id;
@@ -68,6 +70,6 @@ app.post('/events', async (req, res) => {
     res.send({});
 })
 
-app.listen(4001, () => {
+app.listen(4001, async () => {
     console.log('Listening on Port 4001');
 });

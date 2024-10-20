@@ -8,6 +8,8 @@ export default () => {
 
         await axios.post('http://localhost:4000/posts', {
             title
+        }).catch(err => {
+            console.log(err.message);
         });
 
         setTitle("");
