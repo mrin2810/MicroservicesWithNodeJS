@@ -131,3 +131,24 @@ Pros and Cons:
 - which will now update the status of comment. (without dwelving into how and why the comment was updated).
 
 We will go with option 3.
+
+### Dealing with missing events
+![alt text](image.png)
+Per the above diagram when we miss some events, we dont have any way to recover them.
+
+#### Option 1: Sync Requests
+- When a new service starts, or re-starts after crashing. 
+- We can send a request to all the remaining services, asking for all the data which is already present.
+- Downside is it is a sync request.
+- And we will have to have this endpoint in all other services.
+
+#### Option 2: Direct DB Access
+- We can have the service direct access to all the DBs.
+- Downside, it will need to follow whatever DB.
+- And this will be another overhead, and not something we will like.
+
+#### Option 3: Store Event
+- We can add a database for Event-Bus.
+- And store all the events that have been processed.
+- So, when a new service starts or restarts, we can query the event-bus 
+and get all the events that it had missed.ß
