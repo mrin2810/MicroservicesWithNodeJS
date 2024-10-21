@@ -261,3 +261,5 @@ The current direct service linking is not scalable or maintainable. We need a mo
 
 #### Conclusion
 Kubernetes is essential for managing microservices effectively, providing straightforward communication and simplifying the deployment and scaling of applications.
+
+### Dockertize Post Service:
