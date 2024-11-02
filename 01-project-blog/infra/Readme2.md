@@ -185,3 +185,5 @@ This document provides commands and practices for inspecting and managing Kubern
 ## Conclusion
 
 By leveraging these commands and practices, you can effectively manage your Kubernetes deployments, ensuring your applications remain resilient and responsive to changes.
+
+## Changing Deployment
