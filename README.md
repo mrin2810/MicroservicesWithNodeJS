@@ -262,4 +262,129 @@ The current direct service linking is not scalable or maintainable. We need a mo
 #### Conclusion
 Kubernetes is essential for managing microservices effectively, providing straightforward communication and simplifying the deployment and scaling of applications.
 
-### Dockertize Post Service:
+## Section 4: Kubernetes Setup Guide
+
+In this guide, we will cover the setup process for Kubernetes, a powerful tool for managing and orchestrating containers.
+
+### Overview of Kubernetes
+Kubernetes is designed to run multiple containers simultaneously, managing their creation and operation while facilitating communication between them.
+
+### Setup Options
+
+#### Determining Your Setup
+There are two main scenarios for setting up Kubernetes:
+
+1. **Docker for Mac or Windows**:
+   - Look for the Docker icon in your system tray (top bar for Mac, bottom right for Windows).
+
+2. **Docker Toolbox or Linux**:
+   - If you don’t see the Docker icon, you're likely using Docker Toolbox or Linux.
+
+#### Setting Up Kubernetes on Docker for Mac or Windows
+If you're using Docker for Mac or Windows, follow these steps:
+
+1. Click on the Docker icon in your system tray.
+2. Select **Preferences** from the menu.
+3. Navigate to the **Kubernetes** tab.
+4. Click on **Enable Kubernetes**.
+5. Click **Apply & Restart**.
+
+This process takes about 10 seconds!
+
+#### Setting Up Kubernetes on Docker Toolbox or Linux
+If you're using Docker Toolbox or Linux, the process is a bit more involved:
+
+1. **Install Minikube**:
+   - Minikube creates a local Kubernetes cluster on your machine. 
+   - Refer to the [Minikube Installation Documentation](https://minikube.sigs.k8s.io/docs/start/) for detailed instructions.
+
+   > **Note**: The documentation link may change. If the link doesn't work, search for "install Minikube" in your preferred search engine.
+
+2. **Follow Installation Instructions**:
+   - The documentation provides instructions for Linux, macOS, and Windows. Follow the relevant steps for your OS.
+
+3. **Troubleshooting Docker Toolbox**:
+   - If you encounter issues during installation with Docker Toolbox, be aware that it can be unstable. 
+   - Troubleshooting can be challenging due to the variety of configurations and setups. 
+   - Utilize online resources and communities for assistance.
+
+### Conclusion
+After successfully setting up Kubernetes, you can pause here and move on to the next video or section. If you run into issues with Docker Toolbox, consider researching solutions independently.
+
+### Additional Resources
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [Minikube Documentation](https://minikube.sigs.k8s.io/docs/start/)
+
+### Key Kubernetes Commands
+
+1. **Creating a Pod**
+   - **Command:** `kubectl apply -f <filename>.yaml`
+   - **Usage:** This command processes the specified YAML config file to create the defined resources (like pods) in your cluster.
+   - **Example:** 
+     ```bash
+     kubectl apply -f k8s/posts.yaml
+     ```
+
+2. **Listing Pods**
+   - **Command:** `kubectl get pods`
+   - **Usage:** Lists all pods currently running in the active namespace, providing a quick overview of their status.
+   - **Example:**
+     ```bash
+     kubectl get pods
+     ```
+
+3. **Running Commands Inside a Pod**
+   - **Command:** `kubectl exec -it <pod-name> -- <command>`
+   - **Usage:** Executes a command inside a specified container within a pod. The `-it` flags enable interactive terminal access.
+   - **Example:**
+     ```bash
+     kubectl exec -it posts -- /bin/sh
+     ```
+
+4. **Viewing Logs**
+   - **Command:** `kubectl logs <pod-name>`
+   - **Usage:** Displays logs from the specified pod, which is crucial for debugging and monitoring.
+   - **Example:**
+     ```bash
+     kubectl logs posts
+     ```
+
+5. **Deleting a Pod**
+   - **Command:** `kubectl delete pod <pod-name>`
+   - **Usage:** Deletes the specified pod. This is often used to manually restart a pod or to remove resources no longer needed.
+   - **Example:**
+     ```bash
+     kubectl delete pod posts
+     ```
+
+6. **Describing a Pod**
+   - **Command:** `kubectl describe pod <pod-name>`
+   - **Usage:** Provides detailed information about a pod, including its configuration, status, and event logs. This is invaluable for troubleshooting.
+   - **Example:**
+     ```bash
+     kubectl describe pod posts
+     ```
+
+### Comparison with Docker Commands
+
+- **Docker Command to Create a Container:** `docker run ...`
+  - **Kubernetes Equivalent:** `kubectl apply -f <filename>.yaml`
+  
+- **Docker Command to List Running Containers:** `docker ps`
+  - **Kubernetes Equivalent:** `kubectl get pods`
+  
+- **Docker Command to Execute Inside a Container:** `docker exec -it <container> <command>`
+  - **Kubernetes Equivalent:** `kubectl exec -it <pod-name> -- <command>`
+  
+- **Docker Command to View Logs:** `docker logs <container>`
+  - **Kubernetes Equivalent:** `kubectl logs <pod-name>`
+  
+- **Docker Command to Remove a Container:** `docker rm <container>`
+  - **Kubernetes Equivalent:** `kubectl delete pod <pod-name>`
+  
+- **Docker Command to Inspect a Container:** `docker inspect <container>`
+  - **Kubernetes Equivalent:** `kubectl describe pod <pod-name>`
+
+### Conclusion
+
+These commands will be your primary tools as you work with Kubernetes. Familiarity with them will streamline your workflow and help you manage your applications effectively. As you continue to practice, these commands will become second nature. If you have any questions about specific commands or scenarios, feel free to ask!
